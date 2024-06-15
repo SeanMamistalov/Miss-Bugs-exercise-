@@ -6,30 +6,34 @@ export const bugService = {
   save,
 };
 
-var bugs = utilService.readJsonFile('./data/bug.json')
-
+var bugs = utilService.readJsonFile("./data/bug.json");
 
 function query() {
   return Promise.resolve(bugs);
 }
 
 function getById(bugId) {
-  const bug = bugs.find(bug => bug._id === bugId)
-    return Promise.resolve(bug)
+  const bug = bugs.find((bug) => bug._id === bugId);
+  return Promise.resolve(bug);
 }
 
 function remove(bugId) {
   const idx = bugs.findIndex((bug) => bug._id === bugId);
   bugs.splice(idx, 1);
-  return _saveBugsToFile()
-
+  return _saveBugsToFile();
 }
 
-function save() {
-
+function save(bugToSave) {
+  if (bugToSave._id) {
+    const idx = bugs.findIndex((bug) => bug._id === bugToSave.id);
+    bugs.splice(idx, 1, bugToSave);
+  } else {
+    bugToSave._id = utilService.makeId();
+    bugs.push(bugToSave);
+  }
+  return _saveBugsToFile().then(() => bugToSave);
 }
 
 function _saveBugsToFile() {
-return utilService.writeJsonFile('./data/bug.json', bugs)
-
+  return utilService.writeJsonFile("./data/bug.json", bugs);
 }

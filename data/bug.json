@@ -1,7 +1,18 @@
 [
-    { "_id": "b101", "name": "Beetles" },
-    { "_id": "b102", "name": "Ants" },
-    { "_id": "b103", "name": "Termite" },
-    { "_id": "b104", "name": "Mantis" }
-  ]
-   
+  {
+    "_id": "b101",
+    "name": "Beetles"
+  },
+  {
+    "_id": "b102",
+    "name": "Ants"
+  },
+  {
+    "_id": "b104",
+    "name": "Mantis"
+  },
+  {
+    "_id": "b106",
+    "name": "Bees"
+  }
+]
