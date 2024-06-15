@@ -13,15 +13,23 @@ function query() {
   return Promise.resolve(bugs);
 }
 
-function getById() {
-
-
+function getById(bugId) {
+  const bug = bugs.find(bug => bug._id === bugId)
+    return Promise.resolve(bug)
 }
 
-function remove() {
+function remove(bugId) {
+  const idx = bugs.findIndex((bug) => bug._id === bugId);
+  bugs.splice(idx, 1);
+  return _saveBugsToFile()
 
 }
 
 function save() {
+
+}
+
+function _saveBugsToFile() {
+return utilService.writeJsonFile('./data/bug.json', bugs)
 
 }

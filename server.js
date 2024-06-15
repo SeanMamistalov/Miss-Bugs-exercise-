@@ -10,8 +10,7 @@ app.listen(3030, () =>
 // Express Routing:
 
 app.get("/api/bug", (req, res) => {
-  bugService.query()
-  .then(bugs => res.send(bugs));
+  bugService.query().then((bugs) => res.send(bugs));
 });
 
 app.get("/api/bug/save", (req, res) => {
@@ -31,16 +30,10 @@ app.get("/api/bug/save", (req, res) => {
 
 app.get("/api/bug/:id", (req, res) => {
   const { id } = req.params;
-  const bug = bugs.find((bug) => bug._id === id);
-
-  res.send(bug);
+  bugService.getById(id).then((bug) => res.send(bug));
 });
 
 app.get("/api/bug/:id/remove", (req, res) => {
   const { id } = req.params;
-  const idx = bugs.findIndex((bug) => bug._id === id);
-
-  bugs.splice(idx, 1);
-
-  res.send(`Bug ${id} has been removed...`);
+  bugService.remove(id).then(() => res.send(`Bug ${id} has been removed...`));
 });
