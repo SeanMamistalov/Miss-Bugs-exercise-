@@ -6,10 +6,10 @@ app.listen(3030, () =>
 );
 
 var bugs = [
-  { _id: "b101", name: "hishi" },
-  { _id: "b102", name: "hipushit" },
-  { _id: "b103", name: "dvora" },
-  { _id: "b104", name: "dabur" },
+  { _id: "b101", name: "Beetles" },
+  { _id: "b102", name: "Ants" },
+  { _id: "b103", name: "Termite" },
+  { _id: "b104", name: "Mantis" },
 ];
 
 app.get("/api/bug", (req, res) => {
